@@ -1,13 +1,50 @@
-Version: 1.0
+---
+title: "Assignment3a RMD"
+output: html_document
+---
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
+## R Markdown
 
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r Load Packages}
+library(sf)
+library(tidyverse)
+library(ggthemes)
+library(ggspatial)
+library(units)
+library(nngeo)
+```
+```{r Load Data}
+EV <- st_read("https://bostonopendata-boston.opendata.arcgis.com/datasets/465e00f9632145a1ad645a27d27069b4_2.kml?outSR=%7B%22latestWkid%22%3A2249%2C%22wkid%22%3A102686%7D", 
+                  quiet = TRUE) 
+
+centers <- st_read("https://bostonopendata-boston.opendata.arcgis.com/datasets/acedd06b39854088b0f2fefccffebf84_0.kml?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D", 
+                   quiet = TRUE) 
+
+main <- st_read("https://bostonopendata-boston.opendata.arcgis.com/datasets/440c7ec0178d4c8593aecef7ea96bb4d_0.kml?outSR=%7B%22latestWkid%22%3A2249%2C%22wkid%22%3A102686%7D", 
+                 quiet = TRUE)
+
+nhoods <- st_read("https://bostonopendata-boston.opendata.arcgis.com/datasets/3525b0ee6e6b427f9aab5d0a1d0a1a28_0.kml?outSR=%7B%22latestWkid%22%3A2249%2C%22wkid%22%3A102686%7D", 
+                 quiet = TRUE) 
+```
+
